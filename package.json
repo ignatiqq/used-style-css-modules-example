@@ -1,0 +1,40 @@
+{
+  "name": "used-styles-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:build:client": "webpack --mode=development --config webpack.client.js --progress",
+    "dev:build:server": "webpack --mode=development --config webpack.server.js --progress",
+    "dev:start": "nodemon ./build/server/index.js",
+    "start": "rm -rf build/ && npm run dev:build:client && npm run dev:build:server && npm run dev:start"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.13.8",
+    "css-loader": "6.7.3",
+    "express": "4.17.1",
+    "mini-css-extract-plugin": "2.6.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.4.1",
+    "used-styles": "2.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@babel/plugin-transform-runtime": "7.15.0",
+    "@babel/preset-env": "7.16.8",
+    "@babel/preset-react": "7.16.7",
+    "babel-loader": "8.1.0",
+    "css-loader": "5.2.7",
+    "html-webpack-plugin": "4.5.2",
+    "mini-css-extract-plugin": "1.6.2",
+    "nodemon": "2.0.15",
+    "style-loader": "2.0.0",
+    "webpack": "4.44.2",
+    "webpack-cli": "3.2.3",
+    "webpack-merge": "5.8.0",
+    "webpack-node-externals": "2.5.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
