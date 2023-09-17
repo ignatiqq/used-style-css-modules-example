@@ -26,29 +26,31 @@ app.get("*", async (request, response) => {
 
     const styleStream = createStyleStream(stylesLookup, (file) => {
       console.log({ file });
-      return `<link rel="stylesheet" href="/${file}" data-used-style />`;
+      return `<link rel="stylesheet" href="/css/${file}" data-used-style />`;
     });
   
+    response.write(
+      `<html>
+      <head>
+        <title>React Streaming SSR</title>
+        <script type="module" async src="index.js"></script>
+      </head>
+      `
+    );
+
     let didError;
   
     const stream = renderToPipeableStream(
-      <html>
-        <head>
-          <title>React Streaming SSR</title>
-          <script type="module" async src="index.js"></script>
-        </head>
         <body>
           <div id="root">
             <StaticRouter location={request.url}>
               <Routes />
             </StaticRouter>
           </div>
-        </body>
-      </html>,
+        </body>,
       {
         bootstrapScriptContent: BOOTSTRAP_BEFORE_HYDRATE_SCRIPT_STRING,
         onShellReady() {
-          console.log("on shell ready")
           response.statusCode = didError ? 500 : 200;
           stream.pipe(styleStream).pipe(response);
         },
