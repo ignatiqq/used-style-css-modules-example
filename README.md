@@ -1,1 +1,1 @@
-Start project with npm start command. Server will started on 3006 port
+Start the project using the npm start command. The server will start on port 3006.
