@@ -1,7 +1,7 @@
-
 export class ChunkLoadingTracker {
 
     constructor(stats) {
+        console.log({stats})
         this.stats = stats;
         // stats = webpack-imported stats file
         this.requestedChunks = new Map();
@@ -68,3 +68,22 @@ export const trackLoadedChunk = (loadFn, name, callback) => {
     //    resolve(module);
     // })
 }
+
+export const getChunkLoadingTracker = (() => {
+    let instance;
+
+    return (stats) => {
+        if(instance) return instance;
+        instance = new ChunkLoadingTracker(stats);
+    }
+});
+
+export const dynamicLoad = (function () {
+    if(typeof window === 'undefined') {
+        return (loadFn, name) => trackLoadedChunk(loadFn, name, getChunkLoadingTracker());
+    }
+
+    return (loadFn) => {
+        return React.lazy(loadFn());
+    }
+})

@@ -84,3 +84,12 @@ export const trackLoadedChunk = <T extends LoadFnType>(loadFn: T, name: string, 
     //    resolve(module);
     // })
 }
+
+export const getChunkLoadingTracker = (() => {
+    let instance;
+
+    return (stats: any) => {
+        if(instance) return instance;
+        instance = new ChunkLoadingTracker(stats);
+    }
+});

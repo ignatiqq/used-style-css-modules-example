@@ -8,7 +8,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import express from "express";
 
 import Routes from "../client/routes.js";
-import { ChunkLoadingTracker } from "../libs/chunkLoadingTrackerJs";
+import { ChunkLoadingTracker, getChunkLoadingTracker } from "../libs/chunkLoadingTrackerJs";
 
 const app = express();
 const PORT = process.env.PORT || 3006;
@@ -39,7 +39,7 @@ app.get("*", async (request, response) => {
 
     console.log({stylesLookup, lookup: stylesLookup.lookup});
 
-    const chunkStats = new ChunkLoadingTracker(stats);
+    const chunkStats = getChunkLoadingTracker(stats);
 
     const styleStream = createStyleStream(stylesLookup, (file) => {
       console.log({ file, shouldBeLoaded: chunkStats.chunkShouldBeLoaded.has(file), stats: chunkStats.chunkShouldBeLoaded});
