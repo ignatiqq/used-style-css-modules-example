@@ -1,10 +1,15 @@
 import React, { Suspense } from 'react';
 import {useRoutes} from 'react-router-dom';
 import Main from './main';
+import {dynamicLoad} from '../libs/chunkLoadingTrackerJs';
 
-const Lazy = React.lazy(() => import(/* webpackChunkName: "Lazy" */ "./components/Lazy/Lazy.jsx"));
-const Lazy1 = React.lazy(() => import(/* webpackChunkName: "Lazy1" */ "./components/Lazy1/Lazy1.jsx"));
-const Lazy2 = React.lazy(() => import(/* webpackChunkName: "Lazy2" */ "./components/Lazy2/Lazy2.jsx"));
+// const Lazy = React.lazy(() => import(/* webpackChunkName: "Lazy" */ "./components/Lazy/Lazy.jsx"));
+// const Lazy1 = React.lazy(() => import(/* webpackChunkName: "Lazy1" */ "./components/Lazy1/Lazy1.jsx"));
+// const Lazy2 = React.lazy(() => import(/* webpackChunkName: "Lazy2" */ "./components/Lazy2/Lazy2.jsx"));
+
+const Lazy = dynamicLoad(() => import(/* webpackChunkName: "Lazy" */ "./components/Lazy/Lazy.jsx"), 'Lazy');
+const Lazy1 = dynamicLoad(() => import(/* webpackChunkName: "Lazy1" */ "./components/Lazy1/Lazy1.jsx"), 'Lazy1');
+const Lazy2 = dynamicLoad(() => import(/* webpackChunkName: "Lazy2" */ "./components/Lazy2/Lazy2.jsx"), 'Lazy2');
 
 
 const Routes = () => {

@@ -1,0 +1,139 @@
+{
+  "config": {
+    "publicPath": "auto",
+    "outputPath": "build/client",
+    "aliases": {}
+  },
+  "chunks": {
+    "main": {
+      "load": [
+        "main"
+      ],
+      "preload": [],
+      "prefetch": []
+    },
+    "Lazy": {
+      "load": [
+        "Lazy"
+      ],
+      "preload": [],
+      "prefetch": []
+    },
+    "Lazy1": {
+      "load": [
+        "Lazy1"
+      ],
+      "preload": [],
+      "prefetch": []
+    },
+    "Lazy2": {
+      "load": [
+        "Lazy2"
+      ],
+      "preload": [],
+      "prefetch": []
+    }
+  },
+  "chunkMap": {
+    "main": {
+      "js": [
+        "index.js"
+      ]
+    },
+    "Lazy2": {
+      "js": [
+        "Lazy2.index.js"
+      ],
+      "css": [
+        "css/Lazy2.d818281ccb18fbbd10d4.css"
+      ]
+    },
+    "Lazy1": {
+      "js": [
+        "Lazy1.index.js"
+      ],
+      "css": [
+        "css/Lazy1.92890cc4adc836ee79ae.css"
+      ]
+    },
+    "Lazy": {
+      "js": [
+        "Lazy.index.js"
+      ],
+      "css": [
+        "css/Lazy.f9aa5447b1951593a3d0.css"
+      ]
+    }
+  },
+  "assets": [
+    {
+      "name": "index.js",
+      "size": 1508768,
+      "type": "js"
+    },
+    {
+      "name": "Lazy2.index.js",
+      "size": 5516,
+      "type": "js"
+    },
+    {
+      "name": "Lazy1.index.js",
+      "size": 5513,
+      "type": "js"
+    },
+    {
+      "name": "Lazy.index.js",
+      "size": 5436,
+      "type": "js"
+    },
+    {
+      "name": "css/Lazy2.d818281ccb18fbbd10d4.css",
+      "size": 131,
+      "type": "css"
+    },
+    {
+      "name": "css/Lazy.f9aa5447b1951593a3d0.css",
+      "size": 123,
+      "type": "css"
+    },
+    {
+      "name": "css/Lazy1.92890cc4adc836ee79ae.css",
+      "size": 120,
+      "type": "css"
+    }
+  ],
+  "moduleMap": {
+    "./src/client/components/Lazy/Lazy.jsx": "Lazy",
+    "./src/client/components/Lazy/Lazy.module.css": "Lazy",
+    "./src/client/components/shared/Shared.js": "Lazy2",
+    "./src/client/components/shared/shared.module.css": "Lazy2",
+    "null": "Lazy2",
+    "./src/client/components/Lazy1/Lazy1.jsx": "Lazy1",
+    "./src/client/components/Lazy1/Lazy1.module.css": "Lazy1",
+    "./src/client/components/Lazy2/Lazy2.jsx": "Lazy2",
+    "./src/client/components/Lazy2/Lazy2.module.css": "Lazy2",
+    "./node_modules/@remix-run/router/dist/router.js": "main",
+    "./node_modules/function-double/lib/index.js": "main",
+    "./node_modules/kashe/dist/es2015/utils.js": "main",
+    "./node_modules/kashe/dist/es2015/weak.js": "main",
+    "./node_modules/kashe/dist/es2015/weakStorage.js": "main",
+    "./node_modules/react-dom/cjs/react-dom.development.js": "main",
+    "./node_modules/react-dom/client.js": "main",
+    "./node_modules/react-dom/index.js": "main",
+    "./node_modules/react-router-dom/dist/index.js": "main",
+    "./node_modules/react-router/dist/index.js": "main",
+    "./node_modules/react/cjs/react.development.js": "main",
+    "./node_modules/react/index.js": "main",
+    "./node_modules/scheduler/cjs/scheduler.development.js": "main",
+    "./node_modules/scheduler/index.js": "main",
+    "./node_modules/util-arity/arity.js": "main",
+    "./node_modules/webpack-imported/dist/es2015/imported.js": "main",
+    "./node_modules/webpack-imported/dist/es2015/tracker.js": "main",
+    "./node_modules/webpack-imported/dist/es2015/utils/intent-the-order.js": "main",
+    "./src/client/index.js": "main",
+    "./src/client/main.js": "main",
+    "./src/client/routes.js": "main",
+    "./src/libs/chunkLoadingTrackerJs.js": "main",
+    "": "main"
+  }
+}
