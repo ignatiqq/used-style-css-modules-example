@@ -2,6 +2,7 @@ const path = require("path");
 const { merge } = require("webpack-merge");
 const config = require("./webpack.config");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const {ImportedPlugin} = require('webpack-imported');
 
 module.exports = merge(config, {
   target: "web",
@@ -28,6 +29,9 @@ module.exports = merge(config, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash].css"
-    })
+    }),
+    new ImportedPlugin('imported.json', {
+      saveToFile: path.join(__dirname, 'imported.json'),
+  }),
   ],
 });
