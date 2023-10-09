@@ -7,6 +7,12 @@ const {ImportedPlugin} = require('webpack-imported');
 module.exports = merge(config, {
   target: "web",
   entry: "./src/client/index.js",
+  resolve: {
+    fallback: {
+      path: require.resolve('path-browserify'),
+      fs: false
+    }
+  },
   output: {
     path: path.resolve(__dirname, "build", "client"),
     filename: "index.js",

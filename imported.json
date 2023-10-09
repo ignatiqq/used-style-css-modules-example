@@ -1,6 +1,6 @@
 {
   "config": {
-    "publicPath": "",
+    "publicPath": "auto",
     "outputPath": "build/client",
     "aliases": {}
   },
@@ -35,20 +35,9 @@
     }
   },
   "chunkMap": {
-    "Lazy": {
+    "main": {
       "js": [
-        "Lazy.index.js"
-      ],
-      "css": [
-        "css/Lazy.ece5758929c8d0a393e4.css"
-      ]
-    },
-    "Lazy1": {
-      "js": [
-        "Lazy1.index.js"
-      ],
-      "css": [
-        "css/Lazy1.e732a499a5c7388f227f.css"
+        "index.js"
       ]
     },
     "Lazy2": {
@@ -56,50 +45,61 @@
         "Lazy2.index.js"
       ],
       "css": [
-        "css/Lazy2.152454cfc5fd81b9589f.css"
+        "css/Lazy2.d818281ccb18fbbd10d4.css"
       ]
     },
-    "main": {
+    "Lazy1": {
       "js": [
-        "index.js"
+        "Lazy1.index.js"
+      ],
+      "css": [
+        "css/Lazy1.92890cc4adc836ee79ae.css"
+      ]
+    },
+    "Lazy": {
+      "js": [
+        "Lazy.index.js"
+      ],
+      "css": [
+        "css/Lazy.f9aa5447b1951593a3d0.css"
       ]
     }
   },
   "assets": [
     {
-      "name": "Lazy.index.js",
-      "size": 4227,
-      "type": "js"
-    },
-    {
-      "name": "Lazy1.index.js",
-      "size": 4304,
+      "name": "index.js",
+      "size": 1508768,
       "type": "js"
     },
     {
       "name": "Lazy2.index.js",
-      "size": 4307,
+      "size": 5516,
       "type": "js"
     },
     {
-      "name": "css/Lazy.ece5758929c8d0a393e4.css",
-      "size": 123,
-      "type": "css"
+      "name": "Lazy1.index.js",
+      "size": 5513,
+      "type": "js"
     },
     {
-      "name": "css/Lazy1.e732a499a5c7388f227f.css",
-      "size": 120,
-      "type": "css"
+      "name": "Lazy.index.js",
+      "size": 5436,
+      "type": "js"
     },
     {
-      "name": "css/Lazy2.152454cfc5fd81b9589f.css",
+      "name": "css/Lazy2.d818281ccb18fbbd10d4.css",
       "size": 131,
       "type": "css"
     },
     {
-      "name": "index.js",
-      "size": 1501423,
-      "type": "js"
+      "name": "css/Lazy.f9aa5447b1951593a3d0.css",
+      "size": 123,
+      "type": "css"
+    },
+    {
+      "name": "css/Lazy1.92890cc4adc836ee79ae.css",
+      "size": 120,
+      "type": "css"
     }
   ],
   "moduleMap": {
@@ -107,16 +107,16 @@
     "./src/client/components/Lazy/Lazy.module.css": "Lazy",
     "./src/client/components/shared/Shared.js": "Lazy2",
     "./src/client/components/shared/shared.module.css": "Lazy2",
-    "?b369": "Lazy",
-    "?e353": "Lazy2",
+    "null": "Lazy2",
     "./src/client/components/Lazy1/Lazy1.jsx": "Lazy1",
     "./src/client/components/Lazy1/Lazy1.module.css": "Lazy1",
-    "?4eab": "Lazy1",
     "./src/client/components/Lazy2/Lazy2.jsx": "Lazy2",
     "./src/client/components/Lazy2/Lazy2.module.css": "Lazy2",
-    "?35d4": "Lazy2",
     "./node_modules/@remix-run/router/dist/router.js": "main",
-    "./node_modules/process/browser.js": "main",
+    "./node_modules/function-double/lib/index.js": "main",
+    "./node_modules/kashe/dist/es2015/utils.js": "main",
+    "./node_modules/kashe/dist/es2015/weak.js": "main",
+    "./node_modules/kashe/dist/es2015/weakStorage.js": "main",
     "./node_modules/react-dom/cjs/react-dom.development.js": "main",
     "./node_modules/react-dom/client.js": "main",
     "./node_modules/react-dom/index.js": "main",
@@ -126,12 +126,14 @@
     "./node_modules/react/index.js": "main",
     "./node_modules/scheduler/cjs/scheduler.development.js": "main",
     "./node_modules/scheduler/index.js": "main",
-    "./node_modules/setimmediate/setImmediate.js": "main",
-    "./node_modules/timers-browserify/main.js": "main",
-    "./node_modules/webpack/buildin/global.js": "main",
-    "./node_modules/webpack/buildin/module.js": "main",
+    "./node_modules/util-arity/arity.js": "main",
+    "./node_modules/webpack-imported/dist/es2015/imported.js": "main",
+    "./node_modules/webpack-imported/dist/es2015/tracker.js": "main",
+    "./node_modules/webpack-imported/dist/es2015/utils/intent-the-order.js": "main",
     "./src/client/index.js": "main",
     "./src/client/main.js": "main",
-    "./src/client/routes.js": "main"
+    "./src/client/routes.js": "main",
+    "./src/libs/chunkLoadingTrackerJs.js": "main",
+    "": "main"
   }
 }

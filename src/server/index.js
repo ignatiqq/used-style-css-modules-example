@@ -1,6 +1,5 @@
 import React from "react";
-import path from "path";
-import fs, { stat } from 'fs';
+
 import { renderToPipeableStream } from "react-dom/server";
 import { createStyleStream, discoverProjectStyles } from "used-styles";
 import { StaticRouter } from 'react-router-dom/server';
@@ -8,7 +7,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import express from "express";
 
 import Routes from "../client/routes.js";
-import { ChunkLoadingTracker, getChunkLoadingTracker } from "../libs/chunkLoadingTrackerJs";
+import { getChunkLoadingTracker } from "../libs/chunkLoadingTrackerJs";
 
 const app = express();
 const PORT = process.env.PORT || 3006;
@@ -20,22 +19,24 @@ const BOOTSTRAP_BEFORE_HYDRATE_SCRIPT_STRING =
 
 const stylesLookup = discoverProjectStyles("build/client/css");
 
-function getImportedStats(path) {
+const getImportedStats = (function () {
   let stats;
 
-  return () => {
+  return async (path) => {
     if(!!stats) return stats;
 
-    const file = fs.readFile(path);
+    const file = await fs.readFile(path);
+    console.log({file})
     stats = file;
     return stats;
   }
-}
+})();
 
 app.get("*", async (request, response) => {
   try {
+    console.log({fs});
     await stylesLookup;
-    const stats = getImportedStats('./imported.json');
+    const stats = await getImportedStats('./imported.json');
 
     console.log({stylesLookup, lookup: stylesLookup.lookup});
 

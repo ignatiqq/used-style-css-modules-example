@@ -1,3 +1,6 @@
+import React from "react";
+import { importAssets } from "webpack-imported";
+
 export class ChunkLoadingTracker {
 
     constructor(stats) {
@@ -5,6 +8,7 @@ export class ChunkLoadingTracker {
         this.stats = stats;
         // stats = webpack-imported stats file
         this.requestedChunks = new Map();
+        this.collect = this.collect.bind(this);
     }
 
     // // collect by chunk
@@ -20,8 +24,13 @@ export class ChunkLoadingTracker {
     // только действительно нужные стили для чанков
     // и можем проверять заргужать стили или нет (из стрима) сверив их с chunkShouldBeLoaded
     collect(chunkName) {
+        // remove this str only for my project
+        if(!this.stats) return;
+
         const {styles} = importAssets(this.stats, chunkName);
         const stats = styles.load;
+
+        console.log("collector.collect", {styles, stats})
 
         for(let chunk of stats) {
             this.chunkShouldBeLoaded.add(chunk);
@@ -54,7 +63,7 @@ export class ChunkLoadingTracker {
  * @param name - name of chunk which will be loaded
  */
 export const trackLoadedChunk = (loadFn, name, callback) => {
-    const promise = loadFn();
+    const promise = React.lazy(loadFn());
 
     // first of all request fot chunk
     // because of callback has slow sync calculcations
@@ -73,17 +82,24 @@ export const getChunkLoadingTracker = (() => {
     let instance;
 
     return (stats) => {
-        if(instance) return instance;
+        console.log({stats})
+        if(!!instance) return instance;
         instance = new ChunkLoadingTracker(stats);
+        return instance;
     }
-});
+})();
 
 export const dynamicLoad = (function () {
+    console.log({win: typeof window})
     if(typeof window === 'undefined') {
-        return (loadFn, name) => trackLoadedChunk(loadFn, name, getChunkLoadingTracker());
+        return (loadFn, name) => {
+            console.log("CALL")
+            return trackLoadedChunk(loadFn, name, getChunkLoadingTracker().collect)
+        };
     }
 
     return (loadFn) => {
-        return React.lazy(loadFn());
+        console.log({clientLoadFn: loadFn})
+        return React.lazy(() => loadFn());
     }
-})
+})();
