@@ -8,7 +8,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import express from "express";
 
 import Routes from "../client/routes.js";
-import { ChunkLoadingTracker } from "../libs/chunkLoadingTracker.js";
+import { ChunkLoadingTracker } from "../libs/chunkLoadingTrackerJs";
 
 const app = express();
 const PORT = process.env.PORT || 3006;
